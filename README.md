@@ -1,1 +1,1 @@
-# final_project
+This is the repository for the final project
