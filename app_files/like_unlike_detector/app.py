@@ -1,7 +1,7 @@
 import gradio as gr
 import tensorflow as tf
 
-IMG_SIZE = (128, 128)
+IMG_SIZE = (224, 224)
 
 # load keras model
 model_path = 'my_model.h5'
@@ -10,7 +10,7 @@ model = tf.keras.models.load_model(model_path)
 categories = ('like', 'unlike')
 
 def classify_image(img):
-    img_array_expanded_dims = img.reshape((-1, 128, 128, 3))
+    img_array_expanded_dims = img.reshape((-1, 224, 224, 3))
     prediction = model.predict(img_array_expanded_dims)
     prediction_prob = float(tf.nn.sigmoid(prediction))
     probs = [1-prediction_prob, prediction_prob]
